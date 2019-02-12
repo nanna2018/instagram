@@ -130,34 +130,3 @@ func ListarFoto() []model.RFoto {
 	}
 	return resultado
 }
-
-//MostrarFoto test
-func MostrarFoto() []model.RFoto {
-	db, err := sql.Open("mysql", "ubuntu:ubuntu@tcp(localhost:3306)/proyecto1")
-
-	if err != nil {
-		panic(err.Error())
-	}
-
-	defer db.Close()
-	comando := "SELECT ID, Name, Url FROM Foto"
-	fmt.Println(comando)
-
-	query, err := db.Query("SELECT ID, Name, Url FROM Foto")
-
-	if err != nil {
-		panic(err.Error())
-	}
-
-	resultado := make([]model.RFoto, 0)
-
-	for query.Next() {
-		var foto = model.RFoto{}
-		err = query.Scan(&foto.ID, &foto.Name)
-		if err != nil {
-			panic(err.Error())
-		}
-		resultado = append(resultado, foto)
-	}
-	return resultado
-}

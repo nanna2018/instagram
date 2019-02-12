@@ -219,11 +219,6 @@ func ListarFoto(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	defer r.Body.Close()
-	if r.Method != http.MethodPost {
-		http.NotFound(w, r)
-		return
-	}
 
 	lista := client.ListarFoto()
 	w.WriteHeader(http.StatusOK)

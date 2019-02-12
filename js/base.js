@@ -80,11 +80,6 @@ $(document).ready(function() {
             console.log("Petición completa");
         });
    });
-
-
-   //fotos
-  
-   
    //Ajax para mostrar las fotos
 function ActualizarFotos() {   
     $.ajax({
@@ -111,8 +106,8 @@ function Historial_Fotos(array) {
         for(var x = 0; x < array.length; x++) {
             div.append( 
             "<div>"
-                +"<img src='/files/"+array[x].ID+"' width='300px' height='180px'>"+
-                "<p>"+array[x].Name+"</p>"+
+                +"<img src='/files/"+array[x].Name+"' width='300px' height='180px'>"+
+                "<p>"+array[x].ID+"</p>"+
             "</div>");
         }
     } else {
