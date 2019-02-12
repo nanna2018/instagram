@@ -1,8 +1,6 @@
 package model
 
-import "time"
-
-// Type RUsuario struct
+// RUsuario struct
 type RUsuario struct {
 	ID       int
 	Name     string
@@ -10,12 +8,10 @@ type RUsuario struct {
 	Email    string
 }
 
-//Type RFoto struct
+// RFoto struct
 type RFoto struct {
-	ID    int
-	Lugar string
-	Texto string
-	Fecha time.Time
+	ID   int
+	Name string
 }
 
 //RLogin struct

@@ -6,6 +6,7 @@ import (
 
 //Usuario struct
 type Usuario struct {
+	ID       int
 	Name     string
 	Password string
 	Email    string
@@ -13,8 +14,12 @@ type Usuario struct {
 
 //Foto struct
 type Foto struct {
-	ID    int64
-	Lugar string
+	ID   int64
+	Name string
+}
+
+//Filtro struct
+type Filtro struct {
 	Fecha time.Time
 }
 

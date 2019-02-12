@@ -15,5 +15,33 @@
 </head>
 <body>
     <p>Perfil</p>
+    
+    <!--<form enctype="multipart/form-data" action="/upload" method="POST" >
+        <input type="text" name="text" placeholder="Lugar" value="Lugar">
+        <input type="file" name="uploadfile"/>
+        <input type="hidden" name="token" value="{{/ListarFoto}}"/>
+        <input type="submit" value="upload" id="preview"/>
+    </form>-->
+    <form enctype="multipart/form-data"  action="uploader" method="POST"  >
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="txtTexto"name="texto" placeholder="Nombre"   multiple required />
+        </div>
+        <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" class="form-control" id="file" name="archivo"   accept=".pdf,.jpg,.png" required />
+        </div>
+        <input type="submit"  id="btnFoto"   value="Enviar"/>
+    </form>
+<table id="fotos">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+       
+    </thead>
+    <tbody></tbody>
+</table>
+    
+</form>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
     console.log("hola")
-  
+    ActualizarFotos();
     $("#txtEmail").keyup(function(event) {
         if (event.keyCode === 13) {
              $("btnEnviar").click();
@@ -74,10 +74,54 @@ $(document).ready(function() {
         
         }).fail(function(data) {
             console.log("Petición fallida");
+            
         
         }).always(function(data){
             console.log("Petición completa");
         });
    });
-});
+
+
+   //fotos
   
+   
+   //Ajax para mostrar las fotos
+function ActualizarFotos() {   
+    $.ajax({
+        url: "/lista",
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        success: function(data) {
+            Historial_Fotos(data);
+        },
+        error: function(data) {
+            console.log(data);
+        }
+    });
+}
+
+function Historial_Fotos(array) {
+    
+    var div = $("#fotos");
+    div.children().remove();
+    if(array != null && array.length > 0) {
+      
+
+        for(var x = 0; x < array.length; x++) {
+            div.append( 
+            "<div>"
+                +"<img src='/files/"+array[x].ID+"' width='300px' height='180px'>"+
+                "<p>"+array[x].Name+"</p>"+
+            "</div>");
+        }
+    } else {
+        div.append('<div colspan="3">No hay registros de hoy</div>');
+        
+    }
+}
+
+
+
+
+})

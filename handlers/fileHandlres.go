@@ -59,20 +59,6 @@ func CSSFile(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-// LoginFile para abrir pagina de login
-func LoginFile(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
-	if r.URL.Path != PathLoginFile {
-		http.NotFound(w, r)
-		return
-	}
-	if r.Method != http.MethodGet {
-		http.NotFound(w, r)
-		return
-	}
-	http.ServeFile(w, r, "pages/login.html")
-}
-
 //RegisterFile para abrir pagina de registro
 func RegisterFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
@@ -87,6 +73,20 @@ func RegisterFile(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "pages/register.html")
 }
 
+// LoginFile para abrir pagina de login
+func LoginFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
+	if r.URL.Path != PathLoginFile {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.NotFound(w, r)
+		return
+	}
+	http.ServeFile(w, r, "pages/login.html")
+}
+
 //PerfilFile para abrir pagina de registro
 func PerfilFile(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
@@ -99,4 +99,18 @@ func PerfilFile(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	http.ServeFile(w, r, "pages/perfil.html")
+}
+
+//FotoFile para abrir pagina de registro
+func FotoFile(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Solicitud entrante de " + r.URL.EscapedPath())
+	if r.URL.Path != PathFoto {
+		http.NotFound(w, r)
+		return
+	}
+	if r.Method != http.MethodGet {
+		http.NotFound(w, r)
+		return
+	}
+	http.FileServer(http.Dir("perfil"))
 }
